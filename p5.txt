@@ -193,7 +193,7 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 	950 y 952.
 
  ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
-	Que el Expires ha cambiado a 0. Para cerrar la sesión.
+	Que el Expires ha cambiado a 0.
 
 
 
