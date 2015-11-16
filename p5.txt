@@ -93,7 +93,7 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 	La trama 50, contiene un mensaje de error el 401 Unauthorized.
 
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
-	Se ve que en el primer intento el paquete tiene un tamaño de 		513 y el segundo de 712, esto se debe a que en el segundo 		intento hay un nuevo campo el de Authorization.
+	Se ve que en el primer intento el paquete tiene un tamaño de 513 y el segundo de 712, esto se debe a que en el segundo intento hay un nuevo campo el de Authorization.
 
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
 	3600 segundos
@@ -110,12 +110,12 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 	No, se recibe un 407  Proxy Authentication error.
 
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
-	En el tamaño, el primero es de 982 y el segundo de 1181. En el 		segundo INVITE se añade el campo Proxy-Authorization.
+	En el tamaño, el primero es de 982 y el segundo de 1181. En el segundo INVITE se añade el campo Proxy-Authorization.
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
-	Se usa los protocolos RTP y RTCP. RTP en el nivel de sesion 		para la transmisión de información en tiempo real y RTCP 	 proporciona información de control sobre la calidad de 		transmisión.
+	Se usa los protocolos RTP y RTCP. RTP en el nivel de sesion para la transmisión de información en tiempo real y RTCP 	 proporciona información de control sobre la calidad de transmisión.
 
  ** ¿Cuál es el tamaño de paquete de los mismos?
 	El tamaño de paquete de RTP es 214 y para RTCP es 102.
@@ -124,7 +124,7 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 	No, Padding: False
 
  ** ¿Cuál es la periodicidad de los paquetes que se envían?
-	Cada 0.02 segundos. Cuando pasa el tiempo es mas eficiente y 		se envian con mas rapidez.
+	Cada 0.02 segundos. Cuando pasa el tiempo es mas eficiente y se envian con mas rapidez.
 
  ** ¿Cuántos bits/segundo estamos enviando?
 	64000 bits/segundo.
@@ -134,16 +134,16 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
-	Hay dos flujos. Uno de video codificado h261 y otro de audio 		g711A.
+	Hay dos flujos. Uno de video codificado h261 y otro de audio g711A.
 
  ** ¿Cuántos paquetes se pierden?
 	Ninguno.
 
  ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
-	El valor máximo de la delta es 1290.48 y 1290.44. Es el 	retardo de un paquete respecto al anterior.
+	El valor máximo de la delta es 1290.48 y 1290.44. Es el retardo de un paquete respecto al anterior.
 
  ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
-	Los valores son 153.24 - 183.10 y 42.50 - 119.64. El jitter es 		la variacióndel retardo. No es de calidad porque los valores 		del jitter varían mucho.
+	Los valores son 153.24 - 183.10 y 42.50 - 119.64. El jitter es la variacióndel retardo. No es de calidad porque los valores 		del jitter varían mucho.
 
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
@@ -160,7 +160,7 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 	El ancho de banda disminuye.
 	
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
-	Si, ya que hay un cambio en el tiempo que aumenta y dismunuye 		con respecto al paquete anterior.
+	Si, ya que hay un cambio en el tiempo que aumenta y dismunuye con respecto al paquete anterior.
 
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
 	La variacion del jitter.
@@ -172,7 +172,7 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 
  ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
 	El SSRC de audio es 0x43306582 y el de video 0xBF4AFD37.
-	Porque hay dos flujos, uno de video y otro de audio.No hay 		CSRCs.
+	Porque hay dos flujos, uno de video y otro de audio.No hay CSRCs.
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
