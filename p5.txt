@@ -134,35 +134,66 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
+	Hay dos flujos. Uno de video codificado h261 y otro de audio 		g711A.
+
  ** ¿Cuántos paquetes se pierden?
+	Ninguno.
+
  ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
+	El valor máximo de la delta es 1290.48 y 1290.44. Es el 	retardo de un paquete respecto al anterior.
+
  ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+	Los valores son 153.24 - 183.10 y 42.50 - 119.64. El jitter es 		la variacióndel retardo. No es de calidad porque los valores 		del jitter varían mucho.
 
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
  ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
+	Para los dos cero.
+
  ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
+	No, del primer paquete se toman los valores de referencia.
+
  ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
+	246. Este está incluido.
+
  ** ¿A qué se debe el cambio tan brusco del jitter?
+	El ancho de banda disminuye.
+	
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
+	Si, ya que hay un cambio en el tiempo que aumenta y dismunuye 		con respecto al paquete anterior.
+
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
+	La variacion del jitter.
 
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
  ** ¿Cuánto dura la conversación?
- ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+	24.80 segundos.
 
+ ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+	El SSRC de audio es 0x43306582 y el de video 0xBF4AFD37.
+	Porque hay dos flujos, uno de video y otro de audio.No hay 		CSRCs.
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
+	BYE
+
  ** ¿En qué trama(s)?
+	924, 925, 927 y 933.
+
  ** ¿Por qué crees que se envía varias veces?
+	Porque utilizamos UDP que es no fiable, lo manda varias veces 		para asegurarse de que se reciba al otro lado.
 
 
 16. Finalmente, se cierra la aplicación de VozIP.
  ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+	Para cerrar la sesión.
+
  ** ¿En qué trama sucede esto?
+	950 y 952.
+
  ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+	Que el Expires ha cambiado a 0. Para cerrar la sesión.
 
 
 
