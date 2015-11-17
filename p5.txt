@@ -176,7 +176,7 @@ Tenemos peticiones/respuestas entre 192.168... a 86....
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
-	BYE
+	BYE.
 
  ** ¿En qué trama(s)?
 	924, 925, 927 y 933.
@@ -208,16 +208,26 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
 
 17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
  ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
- ** ¿Son diferentes el registro y la descripción de la sesión?
+	El uso de DNS si, ya que estamos utilizando Internet y necesitamos un nombre de dominio. STUN no, por que no estamos conectados a un NAT.
 
+ ** ¿Son diferentes el registro y la descripción de la sesión?
+	No, son iguales. Se modifican los campos de las cabezeras.
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
- ** ¿Cuál es su periodicidad?
- ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
- ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
- ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+	Tenemos dos flujos.
 
+ ** ¿Cuál es su periodicidad?
+	La periodicidad es de 0.02 segundos.
+
+ ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
+	El valor máximo de la delta en del 188.226.157.55 es 1.02 y el jitter tenemos maximo 21.27 y media 21.00. Con la dirección 193.147.49.49 el máximo de la delta es 322.93 y el jitter maximo 47.38 y media 36.49.
+
+ ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
+	En la pestaña Telephony, en VoIP Calls, se nos abre una ventana en la cual señalamos la unica VoIP que aparece y le damos a Player, pulsamos Decode y Reproducir.
+
+ ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+	Se transmite musica, como si fuera una radio.
 
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
