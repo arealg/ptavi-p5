@@ -39,7 +39,7 @@ try:
     student_file_list = os.listdir('/tmp/' + aleatorio)
 except OSError:
     error = 1
-    print "Error: No se ha creado el repositorio git correctamente."
+    print ("Error: No se ha creado el repositorio git correctamente.")
     print
     sys.exit()
 
